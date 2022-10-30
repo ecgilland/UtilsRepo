@@ -1,0 +1,23 @@
+% compute analytic solution
+% syms n;
+% symsum(T(n), n, 1, inf)
+D = 1.431e-7;
+H = 0.15 / 60;
+L = 0.6;
+
+x = 0:0.1:0.6;
+
+sum = 0.2;
+i = 1;
+e=2;
+while e > 0.1
+    temp = sum;
+    sum = sum + T(x, i, D, H, L);
+    e = abs(sum - temp);
+    i = i + 1;
+end
+
+sum = sum +  x^2 * H / (2 * D) - x * H * L / (2 * D) - 15;
+sum
+
+
